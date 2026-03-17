@@ -1,55 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Date - Global Translation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>First Date - Global</title>
     <style>
-        body { font-family: 'Helvetica Neue', sans-serif; background: #0b0e11; color: #fff; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        .card { background: #1c1f26; border-radius: 25px; padding: 30px; width: 85%; max-width: 350px; text-align: center; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #ff4b2b; margin: 0 0 5px; }
-        p { font-size: 14px; color: #aaa; margin-bottom: 20px; }
-        label { display: block; text-align: left; font-size: 12px; margin-bottom: 5px; color: #ff4b2b; font-weight: bold; }
-        select { width: 100%; padding: 12px; border-radius: 10px; background: #2c2f36; color: white; border: 1px solid #444; margin-bottom: 20px; outline: none; }
-        .btn-live { background: #ff4b2b; color: white; border: none; padding: 16px; border-radius: 50px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4); transition: 0.3s; }
-        .btn-live:active { transform: scale(0.95); }
+        /* Bloqueia seleção e toques fantasmas para parecer app nativo */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #0b0e11; 
+            color: #ffffff; 
+            margin: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .card { 
+            background: #1c1f26; 
+            border-radius: 28px; 
+            padding: 35px; 
+            width: 90%; 
+            max-width: 360px; 
+            text-align: center; 
+            border: 1px solid #333;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        h1 { color: #ff4b2b; margin: 0 0 10px; font-size: 28px; letter-spacing: 1px; }
+        p { font-size: 14px; color: #aaa; margin-bottom: 25px; }
+
+        label { 
+            display: block; 
+            text-align: left; 
+            font-size: 11px; 
+            margin-bottom: 8px; 
+            color: #ff4b2b; 
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        select { 
+            width: 100%; 
+            padding: 15px; 
+            border-radius: 12px; 
+            background: #2c313c; 
+            color: white; 
+            border: 1px solid #444; 
+            font-size: 16px;
+            margin-bottom: 25px;
+            outline: none;
+            appearance: none;
+        }
+
+        .btn-live { 
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            color: white; 
+            border: none; 
+            padding: 18px; 
+            border-radius: 50px; 
+            width: 100%; 
+            font-weight: bold; 
+            cursor: pointer; 
+            font-size: 16px; 
+            box-shadow: 0 8px 20px rgba(255, 75, 43, 0.3);
+            transition: transform 0.1s;
+        }
+
+        .btn-live:active { transform: scale(0.96); }
     </style>
 </head>
 <body>
 
 <div class="card">
     <h1>First Date</h1>
-    <p>Global Real-Time Translation</p>
+    <p>Conexão Global com Tradução</p>
     
-    <label>SELECT YOUR LANGUAGE:</label>
+    <label>Escolha seu Idioma:</label>
     <select id="myLang">
-        <option value="pt">Portuguese (Brasil)</option>
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <option value="de">German</option>
+        <option value="pt">Português (Brasil)</option>
+        <option value="en">English (USA)</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
     </select>
 
     <button class="btn-live" onclick="startGlobalCall()">
-        🎥 START TRANSLATED LIVE
+        🎥 INICIAR CHAMADA MUNDIAL
     </button>
 </div>
 
 <script>
     function startGlobalCall() {
         const lang = document.getElementById('myLang').value;
-        const roomId = "FirstDate_World_" + Math.random().toString(36).substring(7);
+        // Gera uma sala única baseada no tempo para não dar conflito
+        const roomId = "FirstDate_" + Math.random().toString(36).substring(7);
         
-        // Configuração para ativar transcrição e tradução no Jitsi Meet
-        const config = `#config.startWithAudioMuted=false&config.defaultLanguage="${lang}"&config.transcription.enabled=true&interfaceConfig.LANG_DETECTION=true`;
-        
+        // Configurações Jitsi para Tradução, Transcrição e Performance
+        const config = [
+            "#config.startWithAudioMuted=false",
+            "config.defaultLanguage='" + lang + "'",
+            "config.transcription.enabled=true",
+            "config.transcription.displayHygieneStatus=true",
+            "interfaceConfig.LANG_DETECTION=true",
+            "interfaceConfig.SHOW_JITSI_WATERMARK=false",
+            "config.prejoinPageEnabled=false" // Pula a tela de espera para ir direto
+        ].join("&");
+
         window.location.href = "https://meet.jit.si/" + roomId + config;
     }
+
+    // Impede o "long press" de abrir menus do navegador
+    window.oncontextmenu = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    };
 </script>
 
 </body>
 </html>
-// Melhora o render do vídeo e acelera o carregamento
-binding.webview1.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-binding.webview1.getSettings().setAllowFileAccess(true);
-binding.webview1.setLayerType(View.LAYER_TYPE_HARDWARE, null);
