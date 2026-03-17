@@ -1,187 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>First Date Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #ff4b2b;
-            --secondary: #ff416c;
-            --bg: #050505;
-            --card-bg: rgba(255, 255, 255, 0.05);
-        }
-
-        * {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            user-select: none;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: radial-gradient(circle at top right, #1a0b0b, var(--bg)); 
-            color: #ffffff; 
-            margin: 0; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .container {
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Efeito de Vidro (Premium) */
-        .premium-card { 
-            background: var(--card-bg); 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 35px; 
-            padding: 40px 30px; 
-            width: 100%; 
-            max-width: 380px; 
-            text-align: center; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-        }
-
-        .logo-area {
-            margin-bottom: 30px;
-        }
-
-        h1 { 
-            font-size: 32px; 
-            font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-
-        .badge {
-            background: rgba(255, 75, 43, 0.15);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-            display: inline-block;
-        }
-
-        p { font-size: 14px; color: #888; margin: 15px 0 30px; line-height: 1.5; }
-
-        .input-group {
-            text-align: left;
-            width: 100%;
-            margin-bottom: 25px;
-        }
-
-        label { 
-            font-size: 11px; 
-            color: #555; 
-            font-weight: 700;
-            margin-left: 5px;
-            text-transform: uppercase;
-        }
-
-        select { 
-            width: 100%; 
-            padding: 18px; 
-            border-radius: 18px; 
-            background: rgba(0,0,0,0.3); 
-            color: white; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            font-size: 16px;
-            margin-top: 8px;
-            appearance: none;
-        }
-
-        /* Botão Premium com Brilho */
-        .btn-premium { 
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white; 
-            border: none; 
-            padding: 20px; 
-            border-radius: 20px; 
-            width: 100%; 
-            font-weight: 700; 
-            font-size: 16px; 
-            box-shadow: 0 10px 30px rgba(255, 75, 43, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .btn-premium:active { transform: scale(0.95); opacity: 0.9; }
-
-        .footer-text {
-            margin-top: 30px;
-            font-size: 11px;
-            color: #444;
-        }
+        :root { --primary: #ff4b2b; --bg: #050505; }
+        * { -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; box-sizing: border-box; }
+        body { font-family: sans-serif; background: radial-gradient(circle at top, #1a0b0b, #050505); color: #fff; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        .premium-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: 30px; padding: 40px; width: 90%; max-width: 380px; text-align: center; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        h1 { font-size: 32px; margin: 0; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p { font-size: 14px; color: #888; margin: 15px 0 30px; }
+        select { width: 100%; padding: 15px; border-radius: 15px; background: #111; color: #fff; border: 1px solid #333; font-size: 16px; margin-bottom: 25px; outline: none; }
+        .btn-premium { background: linear-gradient(45deg, #ff4b2b, #ff416c); color: #fff; border: none; padding: 20px; border-radius: 15px; width: 100%; font-weight: bold; font-size: 16px; box-shadow: 0 10px 20px rgba(255, 75, 43, 0.3); transition: 0.2s; }
+        .btn-premium:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
-
-<div class="container">
     <div class="premium-card">
-        <div class="logo-area">
-            <h1>First Date</h1>
-            <div class="badge">Global Connection</div>
-        </div>
-        
-        <p>Inicie uma chamada de vídeo com tradução simultânea em tempo real.</p>
-        
-        <div class="input-group">
-            <label>Seu Idioma Nativo</label>
-            <select id="myLang">
-                <option value="pt">Português (Brasil)</option>
-                <option value="en">English (USA)</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="it">Italiano</option>
-            </select>
-        </div>
-
-        <button class="btn-premium" onclick="startGlobalCall()">
-            <span>🎥</span> COMEÇAR AGORA
-        </button>
+        <h1>First Date</h1>
+        <p>Premium Global Translation</p>
+        <select id="myLang">
+            <option value="pt">Português (Brasil)</option>
+            <option value="en">English (USA)</option>
+            <option value="es">Español</option>
+        </select>
+        <button class="btn-premium" onclick="startCall()">🎥 START LIVE</button>
     </div>
-    <div class="footer-text">Encrypted & Secure Connection</div>
-</div>
 
-<script>
-    function startGlobalCall() {
-        const lang = document.getElementById('myLang').value;
-        const roomId = "Premium_Room_" + Math.random().toString(36).substring(7);
-        const config = `#config.startWithAudioMuted=false&config.defaultLanguage="${lang}"&config.transcription.enabled=true&config.prejoinPageEnabled=false`;
-        
-        // Vibração ao clicar (Feedback Premium)
-        if (navigator.vibrate) navigator.vibrate(50);
-        
-        window.location.href = "https://meet.jit.si/" + roomId + config;
-    }
-
-    // Bloqueia menus chatos de navegador
-    window.oncontextmenu = function(event) { event.preventDefault(); return false; };
-</script>
-
+    <script>
+        function startCall() {
+            const lang = document.getElementById('myLang').value;
+            const roomId = "FirstDate_" + Math.random().toString(36).substring(7);
+            const config = `#config.startWithAudioMuted=false&config.defaultLanguage="${lang}"&config.transcription.enabled=true&config.prejoinPageEnabled=false`;
+            
+            if (navigator.vibrate) navigator.vibrate(50);
+            window.location.href = "https://meet.jit.si/" + roomId + config;
+        }
+        window.oncontextmenu = function(n) { n.preventDefault(); return false; };
+    </script>
 </body>
 </html>
