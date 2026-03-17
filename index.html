@@ -1,23 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Date - App</title>
+    <title>First Date - Global Translation</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f2f5; text-align: center; }
-        .card { background: white; margin: 20px auto; width: 90%; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 20px; }
-        .photo { width: 100%; height: 300px; background: #ddd; border-radius: 10px; object-fit: cover; }
-        .btn { background-color: #ff4b2b; color: white; border: none; padding: 15px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        body { font-family: 'Helvetica Neue', sans-serif; background: #0b0e11; color: #fff; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .card { background: #1c1f26; border-radius: 25px; padding: 30px; width: 85%; max-width: 350px; text-align: center; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #ff4b2b; margin: 0 0 5px; }
+        p { font-size: 14px; color: #aaa; margin-bottom: 20px; }
+        label { display: block; text-align: left; font-size: 12px; margin-bottom: 5px; color: #ff4b2b; font-weight: bold; }
+        select { width: 100%; padding: 12px; border-radius: 10px; background: #2c2f36; color: white; border: 1px solid #444; margin-bottom: 20px; outline: none; }
+        .btn-live { background: #ff4b2b; color: white; border: none; padding: 16px; border-radius: 50px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4); transition: 0.3s; }
+        .btn-live:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
+
+<div class="card">
     <h1>First Date</h1>
-    <div class="card">
-        <div class="photo">Foto do Perfil</div>
-        <h2>Novo Candidato, 25</h2>
-        <p>Santos, SP</p>
-        <button class="btn">CONVIDAR PARA ENCONTRO</button>
-    </div>
+    <p>Global Real-Time Translation</p>
+    
+    <label>SELECT YOUR LANGUAGE:</label>
+    <select id="myLang">
+        <option value="pt">Portuguese (Brasil)</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+    </select>
+
+    <button class="btn-live" onclick="startGlobalCall()">
+        🎥 START TRANSLATED LIVE
+    </button>
+</div>
+
+<script>
+    function startGlobalCall() {
+        const lang = document.getElementById('myLang').value;
+        const roomId = "FirstDate_World_" + Math.random().toString(36).substring(7);
+        
+        // Configuração para ativar transcrição e tradução no Jitsi Meet
+        const config = `#config.startWithAudioMuted=false&config.defaultLanguage="${lang}"&config.transcription.enabled=true&interfaceConfig.LANG_DETECTION=true`;
+        
+        window.location.href = "https://meet.jit.si/" + roomId + config;
+    }
+</script>
+
 </body>
 </html>
