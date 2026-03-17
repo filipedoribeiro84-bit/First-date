@@ -49,3 +49,7 @@
 
 </body>
 </html>
+// Melhora o render do vídeo e acelera o carregamento
+binding.webview1.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+binding.webview1.getSettings().setAllowFileAccess(true);
+binding.webview1.setLayerType(View.LAYER_TYPE_HARDWARE, null);
