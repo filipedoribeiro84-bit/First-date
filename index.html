@@ -28,15 +28,17 @@
         <button class="btn-premium" onclick="startCall()">🎥 START LIVE</button>
     </div>
 
-    <script>
-        function startCall() {
-            const lang = document.getElementById('myLang').value;
-            const roomId = "FirstDate_" + Math.random().toString(36).substring(7);
-            const config = `#config.startWithAudioMuted=false&config.defaultLanguage="${lang}"&config.transcription.enabled=true&config.prejoinPageEnabled=false`;
-            
-            if (navigator.vibrate) navigator.vibrate(50);
-            window.location.href = "https://meet.jit.si/" + roomId + config;
-        }
+<script>
+    function startCall() {
+        const lang = document.getElementById('myLang').value;
+        const roomId = "FirstDate_" + Math.random().toString(36).substring(7);
+        
+        // CÓDIGO TURBO: Força a entrada e pula as telas de erro
+        const config = `#config.startWithAudioMuted=false&config.defaultLanguage="${lang}"&config.transcription.enabled=true&config.prejoinPageEnabled=false&config.disableDeepLinking=true`;
+        
+        if (navigator.vibrate) navigator.vibrate(50);
+        window.location.href = "https://meet.jit.si/" + roomId + config;
+    }
         window.oncontextmenu = function(n) { n.preventDefault(); return false; };
     </script>
 </body>
